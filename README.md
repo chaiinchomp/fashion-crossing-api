@@ -20,6 +20,22 @@ docker pull ncpierson/fashionscape-api
 
 # Development
 
+## Initial Setup
+
+You will need [yarn](https://yarnpkg.com/getting-started/install) and [docker](https://www.docker.com/get-started) installed before getting started.
+
+Once that's done, install packages and start up the container:
+
+```bash
+cd /wherever/you/cloned/this/repo
+yarn install
+yarn start
+```
+
+To verify that the container is running, you can check with `docker ps`, or just open up your browser to [http://localhost:8000](http://localhost:8000).
+
+## Running locally
+
 To start the application locally with Docker, run:
 
 ```bash
