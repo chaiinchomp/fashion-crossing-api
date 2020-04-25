@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 const FETCH_OPTIONS = {
   headers: {
-    'User-Agent': 'Fashionscape Bot (scape.fashion) (contact@scape.fashion)',
+    'User-Agent': 'Fashion Crossing Bot (https://github.com/chaiinchomp/fashion-crossing-api)',
   },
 };
 
@@ -24,13 +24,24 @@ const toPalette = async src => {
   return palette.map(toHex);
 };
 
-const withColor = async item => {
-  if (!item.images.detail) return item;
+const withColor = async itemJson => {
+  const variantsWithColors = []
+  for (const variantJson of itemJson.variants) {
+    const image = variantJson.storageImage;
+    console.log(`getting image from url ${image}`)
+    const extractedColors = await toPalette(image);
+    variantsWithColors.push({ ...variantJson, extractedColors })
+  }
 
-  const image = item.images.detail;
-  const colors = await toPalette(image);
+  itemJson.variants = variantsWithColors;
 
-  return {...item, colors};
+  // itemJson.variants.forEach((variantJson) => {
+  //   const image = variantJson.image;
+  //   const colors = await toPalette(image);
+  //   return { ...variantJson, colors }
+  // });
+
+  return itemJson;
 };
 
 module.exports = { withColor };

@@ -1,30 +1,12 @@
 #!/bin/bash
 
-ITEMS_PATH="items.json"
-STATS_PATH="stats.json"
+ITEMS_PATH="../../google-sheets-to-json/out/items.json"
+CLOTHING_PATH="clothing.json"
 
 set -e
 
 import() {
-  node tools/import.js $ITEMS_PATH
-
-  stats
+  node tools/import.js $ITEMS_PATH $CLOTHING_PATH
 }
 
-stats() {
-  printf "Before:\n\n"
-  test -f "$STATS_PATH" && cat "$STATS_PATH"
-
-  node tools/stats.js "$STATS_PATH"
-
-  printf "\nAfter:\n\n"
-  test -f "$STATS_PATH" && cat "$STATS_PATH"
-}
-
-COMMAND="$1"
-shift
-
-case "$COMMAND" in
-  import) import $@;;
-  stats) stats $@;;
-esac
+import $@

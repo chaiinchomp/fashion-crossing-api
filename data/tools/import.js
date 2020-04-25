@@ -1,36 +1,27 @@
 const fs = require('fs');
 const slow = require('slow');
 
-const wiki = require('./wiki');
-const {toItem} = require('./model');
-const {withColor} = require('./color');
+const { withColor } = require('./color');
 
-const importItem = async pageId => {
-  const doc = await wiki.parse(pageId);
-  const item = toItem(doc);
-  const itemWithColor = await withColor(item);
+const clothingSources = ['Tops', 'Bottoms', 'Dress-Up', 'Headwear', 'Accessories', 'Socks', 'Shoes', 'Bags', 'Umbrellas']
 
-  return itemWithColor;
+let clothingJson = [];
+
+const importItem = async itemJson => {
+  if (clothingSources.indexOf(itemJson.sourceSheet) >= 0) {
+    const itemModel = await withColor(itemJson);
+    clothingJson.push(itemModel);
+  }
+}
+
+const importItems = async (infile, outfile) => {
+  const allItemsJson = JSON.parse(fs.readFileSync(infile));
+
+  await slow.walk(allItemsJson, importItem);
+
+  fs.writeFileSync(outfile, JSON.stringify(clothingJson, null, 2));
 };
 
-const importItems = async file => {
-  const members = await wiki.categoryMembers('Equipment');
+const [_, __, infile, outfile] = process.argv;
 
-  let pageIds = members.map(member => member.pageid);
-  pageIds = pageIds.sort();
-
-  let processedCount = 0;
-  const items = await slow.run(pageIds, pageId => {
-    if (processedCount % 100 === 0)
-      console.log(`Processing item ${processedCount}...`);
-    processedCount += 1;
-
-    return importItem(pageId);
-  });
-
-  fs.writeFileSync(file, JSON.stringify(items, null, 2));
-};
-
-const [_, __, file] = process.argv;
-
-importItems(file);
+importItems(infile, outfile);
