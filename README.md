@@ -1,24 +1,18 @@
-# fashionscape-api
+# fashion-crossing-api
 
-[scape.fashion](https://scape.fashion) is a website built to help players of Old School Runescape find an outfit which makes
-them look good (&nbsp;☞ﾟ&nbsp;ヮﾟ&nbsp;)&nbsp;☞
+This is a backend API for Animal Crossing New Horizons fashion-related endpoints.
 
-This repository contains the Node/Express application that powers the api. You can find the web application at the
-[fashionscape-web](https://github.com/ncpierson/fashionscape-web) repo.
-
-If you want to work on this project, you can clone the repository:
-
-```bash
-git clone https://github.com/ncpierson/fashionscape-api.git
-```
-
-If you just want to run the api, you can pull the **docker image**:
-
-```bash
-docker pull ncpierson/fashionscape-api
-```
+It was built as a standalone fork off the excellent Old School Runescape [scape.fashion](https://scape.fashion) website ([github](https://github.com/ncpierson/fashionscape-api)).
 
 # Development
+
+If you just want to run the api without setting everything up, you can pull the **docker image**:
+
+```bash
+docker pull chaiinchomp/fashion-crossing-api
+```
+
+Otherwise, for development, clone the repo and read on...
 
 ## Initial Setup
 
@@ -53,6 +47,8 @@ yarn stop
 
 # Deployment
 
+Before running anything, create a new repository on [docker hub](https://hub.docker.com), then in `./scripts/deploy.sh` and `./scripts/build.sh`, replace `chaiinchomp` with your docker ID.
+
 To deploy a new image to Docker Hub:
 
 ```bash
@@ -60,8 +56,7 @@ yarn version --patch # --minor, --major also supported
 yarn deploy
 ```
 
-This will push to the `ncpierson/fashionscape-api` docker hub image. However, if you are not `ncpierson`,
-I recommend that you make changes to the `./scripts/deploy.sh` file before trying to deploy.
+This will create and push a new version commit in git, and push to the docker hub image.
 
 # Documentation
 

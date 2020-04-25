@@ -2,8 +2,8 @@
 
 set -ex
 
-USERNAME=ncpierson
-IMAGE=fashionscape-api
+USERNAME=chaiinchomp
+IMAGE=fashion-crossing-api
 VERSION=`cat VERSION`
 
 ./scripts/build.sh
