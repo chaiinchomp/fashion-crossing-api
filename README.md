@@ -45,9 +45,17 @@ To stop the docker container:
 yarn stop
 ```
 
+## Troubleshooting
+
+If you are getting a "connection reset" error when trying to hit the endpoints in your browser, something went wrong during docker startup. You can view logs with:
+
+```bash
+docker logs fashion-crossing-api
+```
+
 # Deployment
 
-Before running anything, create a new repository on [docker hub](https://hub.docker.com), then in `./scripts/deploy.sh` and `./scripts/build.sh`, replace `chaiinchomp` with your docker ID.
+Before running anything, you'll need your own account on [docker hub](https://hub.docker.com). Create a new repository named `fashion-crossing-api`. Then, in `./scripts/deploy.sh` and `./scripts/build.sh`, replace `chaiinchomp` with your docker ID.
 
 To deploy a new image to Docker Hub:
 
