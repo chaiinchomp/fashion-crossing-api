@@ -1,7 +1,7 @@
 {
-  "name": "gnome-scarf",
-  "version": "0.3.2",
-  "description": "Old School Runescape Fashionscape Tool",
+  "name": "acnh-fashion-crossing",
+  "version": "0.3.3",
+  "description": "Animal Crossing New Horizons Fashion Tool",
   "main": "index.js",
   "author": "Nick Pierson",
   "license": "MIT",
