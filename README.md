@@ -53,6 +53,12 @@ If you are getting a "connection reset" error when trying to hit the endpoints i
 docker logs fashion-crossing-api
 ```
 
+# Importing data
+
+In the `./data` directory you'll find scripts for importing item data and scraping color palettes from them. These scripts use the parsed json outputs from [NooksBazaar/google-sheets-to-json](https://github.com/NooksBazaar/google-sheets-to-json) as a base data set and then add extracted color data to each variant.
+
+To update the data with the latest items, you can either run `./tools/import.js` directly and pass in your own CLI arguments, or just run `items.sh` which will set some sane defaults for you.
+
 # Deployment
 
 Before running anything, you'll need your own account on [docker hub](https://hub.docker.com). Create a new repository named `fashion-crossing-api`. Then, in `./scripts/deploy.sh` and `./scripts/build.sh`, replace `chaiinchomp` with your docker ID.

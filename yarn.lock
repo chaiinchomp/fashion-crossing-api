@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@nooksbazaar/acdb@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@nooksbazaar/acdb/-/acdb-0.2.1.tgz#5e6dbfd279eb41890677981ea2da05c435a6bc22"
+  integrity sha512-5+NhRmV0UuQI+Xn7EhO2M7b+GxdS4oxzQMtEho/kQmmo2ea2boh9e6hGWsxTsa3uje5AiMrvI9diVd/aqVjmQw==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

@@ -15,6 +15,7 @@
     "stop": "./scripts/stop.sh"
   },
   "dependencies": {
+    "@nooksbazaar/acdb": "^0.2.1",
     "body-parser": "^1.19.0",
     "color-difference": "^0.3.4",
     "cors": "^2.8.5",

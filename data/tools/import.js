@@ -1,5 +1,6 @@
 const fs = require('fs');
 const slow = require('slow');
+const allItemsJson = require('@nooksbazaar/acdb/items.json');
 
 const { withColor } = require('./color');
 
@@ -14,14 +15,11 @@ const importItem = async itemJson => {
   }
 }
 
-const importItems = async (infile, outfile) => {
-  const allItemsJson = JSON.parse(fs.readFileSync(infile));
-
+const importItems = async (outfile) => {
   await slow.walk(allItemsJson, importItem);
-
   fs.writeFileSync(outfile, JSON.stringify(clothingJson, null, 2));
 };
 
-const [_, __, infile, outfile] = process.argv;
+const [_, __, outfile] = process.argv;
 
-importItems(infile, outfile);
+importItems(outfile);

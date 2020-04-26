@@ -34,13 +34,6 @@ const withColor = async itemJson => {
   }
 
   itemJson.variants = variantsWithColors;
-
-  // itemJson.variants.forEach((variantJson) => {
-  //   const image = variantJson.image;
-  //   const colors = await toPalette(image);
-  //   return { ...variantJson, colors }
-  // });
-
   return itemJson;
 };
 
