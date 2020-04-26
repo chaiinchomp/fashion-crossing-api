@@ -61,16 +61,36 @@ To update the data with the latest items, you can either run `./tools/import.js`
 
 # Deployment
 
-Before running anything, you'll need your own account on [docker hub](https://hub.docker.com). Create a new repository named `fashion-crossing-api`. Then, in `./scripts/deploy.sh` and `./scripts/build.sh`, replace `chaiinchomp` with your docker ID.
+## Setup
 
-To deploy a new image to Docker Hub:
+This app is deployed using Docker & Heroku.
+
+To get started, make sure you have:
+1. A [Docker hub](https://hub.docker.com) account, with a repository created named `fashion-crossing-api`.
+1. [Docker](https://www.docker.com/get-started) installed and running on your machine. Make sure you are logged in with your docker hub credentials.
+1. A [Heroku](https://www.heroku.com/home) account, with an app created with the name of your choice (`fashion-crossing-api` will already be taken - so you'll need to come up with an alternative)
+1. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed and running on your machine. Make sure you are logged in with your heroku credentials.
+
+You will also need to update a couple values in `./scripts/deploy.sh` and `./scripts/build.sh`. Replace `chaiinchomp` with your docker ID and set `HEROKU_APP` to whatever you named your app in step 3 above.
+
+Once everything is up and running, sign in to the heroku container registry with: `heroku container:login`.
+
+## Deploying a new version
+
+The following scripts will create and push a new version commit in git, update the image on Docker hub, and deploy it to your Heroku app:
 
 ```bash
 yarn version --patch # --minor, --major also supported
 yarn deploy
 ```
 
-This will create and push a new version commit in git, and push to the docker hub image.
+## Troubleshooting
+
+If there's a failure during deployment, you can check the heroku logs with:
+
+```bash
+heroku logs --app YOUR_APP_NAME # to view real-time stream, use --tail option
+```
 
 # Documentation
 
