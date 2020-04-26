@@ -15,7 +15,7 @@ router.get('/:hex', (req, res, next) => {
     .sort(byMatch)
     .slice(0, 50);
 
-  res.json({items: matches});
+  res.json({ items: matches });
 });
 
 const isForSlot = slot => item => !slot || item.slot == slot;

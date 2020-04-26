@@ -10,7 +10,11 @@ let clothingJson = [];
 
 const importItem = async itemJson => {
   if (clothingSources.indexOf(itemJson.sourceSheet) >= 0) {
-    const itemModel = await withColor(itemJson);
+    const itemModel = itemJson;
+    if (itemModel.sourceSheet == 'Dress-Up') {
+      itemModel.sourceSheet = 'DressUp';
+    }
+    itemModel = await withColor(itemJson);
     clothingJson.push(itemModel);
   }
 }

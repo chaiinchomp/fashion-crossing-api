@@ -86,4 +86,20 @@ This route takes a parameter `item` which can be the name of any item known by t
 
 ## GET /items
 
-This route will return the list of all items. [Try it out](https://api.scape.fashion/items)
+Returns a list of all items (names only)
+
+## GET /items/search/
+
+Accepts three optional query params to search for items by different criteria:
+* By name: `/items/search/?name=NAME`
+* By variant: `/items/search/?variant=VARIANT`
+* By slot: `/items/search/?slot=SLOT`
+ * Valid slot values: Tops, Bottoms, DressUp, Headwear, Accessories, Socks, Shoes, Bags, Umbrellas
+
+Query params can be combined (eg. `/items/search/?slot=Tops&variant=Red`) or left off entirely (in which case all items will be returned).
+
+## GET /items/match/?name=NAME&variant=VARIANT
+
+Searches for an item that matches the query criteria, then returns a list of items with the closest match to the item's color palette. If more than one item is returned matching the search criteria, the first result will be used.
+
+Also accepts an additional optional query param to filter the results by slot: `/items/match/?name=NAME&variant=VARIANT&slot=SLOT`
